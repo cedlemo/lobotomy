@@ -178,7 +178,7 @@ The creation of a new Quiz class for this file will be done with:
 
 That's all. You just have to be carefull when you are using quiz.random_entry. With sub separator, each data in a column have been put in an array:
 
-quiz.random_entry.inspect => {:romaji => "house", :kana => ["うち","いえ"]}
-quiz.random_entry.inspect => {:romaji => ["ox","cow"], :kana => "うし"}
+    quiz.random_entry.inspect => {:romaji => "house", :kana => ["うち","いえ"]}
+    quiz.random_entry.inspect => {:romaji => ["ox","cow"], :kana => "うし"}
 
 cedlemo at gmx dot com
