@@ -23,9 +23,9 @@ While I was learning Japanese, I needed a tool that helps me to quickly create l
 lobotomy read a text file which contains data and is formated like this:
 
     #word romaji
-		shoe|kutsu
-		sock|kutsushita
-		house|uchi
+    shoe|kutsu
+    sock|kutsushita
+    house|uchi
 
 User create a new Lobotomy::Quiz class that load this file and generate a new quiz. User can see his stats and save them.
 
@@ -38,36 +38,36 @@ Here is a simple quiz that just displays if your answer is good or wrong.
 With the file vocab.list :
 
     #word romaji
-		shoe|kutsu
-		sock|kutsushita
-		house|uchi
+    shoe|kutsu
+    sock|kutsushita
+    house|uchi
 
 Create a new ruby script called vocab_quizz.rb
 
     #!/usr/bin/env ruby
-		require 'lobotomy'
-		
-		quiz_name = "vocab_quiz"
-		data_file = "./vocab.list"
-		symbols = [:word, :romaji]
-		column_separator = "\|"
-		column_sub_separator = nil
-		nb_questions = 10
+    require 'lobotomy'
+    
+    quiz_name = "vocab_quiz"
+    data_file = "./vocab.list"
+    symbols = [:word, :romaji]
+    column_separator = "\|"
+    column_sub_separator = nil
+    nb_questions = 10
 
-		quiz = Lobotomy::Quiz.new( quiz_name, data_file, symbols, column_separator, column_sub_separator )
+    quiz = Lobotomy::Quiz.new( quiz_name, data_file, symbols, column_separator, column_sub_separator )
 
-		quiz.question_symbol = :word
-		quiz.answer_symbol = :romaji
+    quiz.question_symbol = :word
+    quiz.answer_symbol = :romaji
 
-		quiz.on_bad_answer do
-			puts "Wrong".red
-		end
+    quiz.on_bad_answer do
+      puts "Wrong".red
+    end
 
-		quiz.on_good_answer do
-			puts "Good".green
-		end
+    quiz.on_good_answer do
+      puts "Good".green
+    end
 
-		quiz.launch(nb_questions)
+    quiz.launch(nb_questions)
 
 ####Quiz with more customization
 
