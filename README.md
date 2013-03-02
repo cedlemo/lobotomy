@@ -5,19 +5,23 @@ Lobotomy is a module that helps you to create little quizzes, for terminal emula
 
 ####Install:
 Get current version:
+
     git clone git://github.com/cedlemo/lobotomy.git
 
 Create the gem:
+
     cd lobotomy
     gem build lobotomy.gemspec
 
 Install lobotomy for the current user:
+
     gem install lobotomy-*.gem
 
 ####Lobotomy overview:
 While I was learning Japanese, I needed a tool that helps me to quickly create little quizzes in order to learn things and to check what I have learned .
 
 lobotomy read a text file which contains data and is formated like this:
+
     #word romaji
 		shoe|kutsu
 		sock|kutsushita
