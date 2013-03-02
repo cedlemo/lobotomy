@@ -30,7 +30,7 @@ lobotomy read a text file which contains data and is formated like this:
 User create a new Lobotomy::Quiz class that load this file and generate a new quiz. User can see his stats and save them.
 
 ###Examples:
-Code examples for a simple quiz and a more advanced ones.
+Code examples for a simple quiz and more advanced ones.
 
 ####Simple example:
 Here is a simple quiz that just displays if your answer is good or wrong.
@@ -69,7 +69,7 @@ Create a new ruby script called vocab_quizz.rb
 
     quiz.launch(nb_questions)
 
-####Quiz with more customization
+####Quiz with more customization:
 
 The data file is kanas.list:
 
@@ -110,7 +110,7 @@ You can define the directory where the stats will be saved/loaded
 
 It 's possible to associate code for the two main events of a quiz which are good answer or bad answer:
 
-Just use the methods on_bad_answer() and on_good_answer() and feed them with ruby blocks.
+Just use the methods on_bad_answer() and on_good_answer() and feed them with ruby blocks. You can access the current random entry taken from the full set of data with quiz.random_entry. Look at the code of the examples.
 
 Here we define a block for the bad answer event. If the user answer is wrong, we display information.
 Then we check if the user answer correspond to something in the data.
@@ -161,3 +161,24 @@ Then we allow user to see some of his stats or error:
         end
       end
     end
+
+####Quiz with multiple data in columns:
+
+You can have multiple data in each columns. Lobotomy can deals with this!
+
+Example vocabulary.list:
+
+    #romaji|kanas
+    house|いえ/うち
+    ox/cow|うし
+
+The creation of a new Quiz class for this file will be done with:
+
+    Lobotomy::Quiz.new("vocabulary_quiz", "vocabulary.list", [:romaji,:kana],"\|","\/")
+
+That's all. You just have to be carefull when you are using quiz.random_entry. With sub separator, each data in a column have been put in an array:
+
+quiz.random_entry.inspect => {:romaji => "house", :kana => ["うち","いえ"]}
+quiz.random_entry.inspect => {:romaji => ["ox","cow"], :kana => "うし"}
+
+cedlemo at gmx dot com

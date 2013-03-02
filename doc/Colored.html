@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Module: Colored</title>
+
+  <link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+  <script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="module">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="./lib/lobotomy/colored_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/lobotomy/colored.rb">lib/lobotomy/colored.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-i-color">#color</a></li>
+          
+          <li><a href="#method-i-colorize">#colorize</a></li>
+          
+          <li><a href="#method-i-colors">#colors</a></li>
+          
+          <li><a href="#method-i-extra">#extra</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="./images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="./Lobotomy.html">Lobotomy</a></li>
+        
+          <li><a href="./Lobotomy/Quiz.html">Lobotomy::Quiz</a></li>
+        
+          <li><a href="./Lobotomy/Stats.html">Lobotomy::Stats</a></li>
+        
+          <li><a href="./Colored.html">Colored</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="module">Colored</h1>
+
+    <div id="description" class="description">
+      
+<p>Code taken from:</p>
+
+<pre>https://github.com/defunkt/colored
+
+cute.
+
+&gt;&gt; &quot;this is red&quot;.red
+
+&gt;&gt; &quot;this is red with a blue background (read: ugly)&quot;.red_on_blue
+
+&gt;&gt; &quot;this is red with an underline&quot;.red.underline
+
+&gt;&gt; &quot;this is really bold and really blue&quot;.bold.blue
+
+&gt;&gt; Colored.red &quot;This is red&quot; # but this part is mostly untested</pre>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+      <!-- Constants -->
+      <div id="constants-list" class="section">
+        <h3 class="section-header">Constants</h3>
+        <dl>
+        
+          <dt><a name="COLORS">COLORS</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+          <dt><a name="EXTRAS">EXTRAS</a></dt>
+          
+          <dd class="description"></dd>
+          
+        
+        </dl>
+      </div>
+      
+
+      
+
+      <!-- Methods -->
+      
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="color-method" class="method-detail ">
+          <a name="method-i-color"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">color</span><span
+              class="method-args">(color_name)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="color-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy/colored.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">color</span>(<span class="ruby-identifier">color_name</span>)
+  <span class="ruby-identifier">background</span> = <span class="ruby-identifier">color_name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/on_/</span>
+  <span class="ruby-identifier">color_name</span> = <span class="ruby-identifier">color_name</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-string">'on_'</span>, <span class="ruby-string">''</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">color_name</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">COLORS</span>[<span class="ruby-identifier">color_name</span>]
+  <span class="ruby-node">&quot;\e[#{COLORS[color_name] + (background ? 10 : 0)}m&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- color-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- color-method -->
+
+      
+        <div id="colorize-method" class="method-detail ">
+          <a name="method-i-colorize"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">colorize</span><span
+              class="method-args">(string, options = {})</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="colorize-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy/colored.rb, line 106</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">colorize</span>(<span class="ruby-identifier">string</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">colored</span> = [<span class="ruby-identifier">color</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:foreground</span>]), <span class="ruby-identifier">color</span>(<span class="ruby-node">&quot;on_#{options[:background]}&quot;</span>), <span class="ruby-identifier">extra</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:extra</span>])].<span class="ruby-identifier">compact</span> * <span class="ruby-string">''</span>
+  <span class="ruby-identifier">colored</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">string</span>
+  <span class="ruby-identifier">colored</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">extra</span>(<span class="ruby-value">:clear</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- colorize-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- colorize-method -->
+
+      
+        <div id="colors-method" class="method-detail ">
+          <a name="method-i-colors"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">colors</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="colors-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy/colored.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">colors</span>
+  <span class="ruby-identifier">@@colors</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">COLORS</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">sort</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- colors-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- colors-method -->
+
+      
+        <div id="extra-method" class="method-detail ">
+          <a name="method-i-extra"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">extra</span><span
+              class="method-args">(extra_name)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="extra-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy/colored.rb, line 116</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">extra</span>(<span class="ruby-identifier">extra_name</span>)
+  <span class="ruby-identifier">extra_name</span> = <span class="ruby-identifier">extra_name</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-node">&quot;\e[#{EXTRAS[extra_name]}m&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">EXTRAS</span>[<span class="ruby-identifier">extra_name</span>]
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- extra-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- extra-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+

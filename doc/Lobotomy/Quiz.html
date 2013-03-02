@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  <title>Class: Lobotomy::Quiz</title>
+
+  <link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+  <script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+
+</head>
+<body id="top" class="class">
+
+  <div id="metadata">
+    <div id="home-metadata">
+      <div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+      </div>
+    </div>
+
+    <div id="file-metadata">
+      <div id="file-list-section" class="section">
+        <h3 class="section-header">In Files</h3>
+        <div class="section-body">
+          <ul>
+          
+            <li><a href="../lib/lobotomy_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+              class="thickbox" title="lib/lobotomy.rb">lib/lobotomy.rb</a></li>
+          
+          </ul>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <div id="class-metadata">
+      
+      <!-- Parent Class -->
+      <div id="parent-class-section" class="section">
+        <h3 class="section-header">Parent</h3>
+        
+        <p class="link">Object</p>
+        
+      </div>
+      
+
+      
+
+      
+
+      
+      <!-- Method Quickref -->
+      <div id="method-list-section" class="section">
+        <h3 class="section-header">Methods</h3>
+        <ul class="link-list">
+          
+          <li><a href="#method-c-new">::new</a></li>
+          
+          <li><a href="#method-i-get_random">#get_random</a></li>
+          
+          <li><a href="#method-i-launch">#launch</a></li>
+          
+          <li><a href="#method-i-load_results">#load_results</a></li>
+          
+          <li><a href="#method-i-on_bad_answer">#on_bad_answer</a></li>
+          
+          <li><a href="#method-i-on_good_answer">#on_good_answer</a></li>
+          
+          <li><a href="#method-i-question_label">#question_label</a></li>
+          
+          <li><a href="#method-i-results">#results</a></li>
+          
+          <li><a href="#method-i-save_results">#save_results</a></li>
+          
+        </ul>
+      </div>
+      
+
+      
+    </div>
+
+    <div id="project-metadata">
+      
+      
+
+      <div id="classindex-section" class="section project-section">
+        <h3 class="section-header">Class/Module Index
+          <span class="search-toggle"><img src="../images/find.png"
+            height="16" width="16" alt="[+]"
+            title="show/hide quicksearch" /></span></h3>
+        <form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+        <fieldset>
+          <legend>Quicksearch</legend>
+          <input type="text" name="quicksearch" value=""
+            class="quicksearch-field" />
+        </fieldset>
+        </form>
+
+        <ul class="link-list">
+        
+          <li><a href="../Lobotomy.html">Lobotomy</a></li>
+        
+          <li><a href="../Lobotomy/Quiz.html">Lobotomy::Quiz</a></li>
+        
+          <li><a href="../Lobotomy/Stats.html">Lobotomy::Stats</a></li>
+        
+          <li><a href="../Colored.html">Colored</a></li>
+        
+        </ul>
+        <div id="no-class-search-results" style="display: none;">No matching classes.</div>
+      </div>
+
+      
+    </div>
+  </div>
+
+  <div id="documentation">
+    <h1 class="class">Lobotomy::Quiz</h1>
+
+    <div id="description" class="description">
+      
+<p>Generate a quiz from a set of data in a file. Each lines in the file is an
+entry. In each line there is informations that are separated by a pattern</p>
+
+    </div><!-- description -->
+
+    
+    
+    
+    <div id="5Buntitled-5D" class="documentation-section">
+      
+
+      
+
+      
+
+      
+      <!-- Attributes -->
+      <div id="attribute-method-details" class="method-section section">
+        <h3 class="section-header">Attributes</h3>
+
+        
+        <div id="answer_symbol-attribute-method" class="method-detail">
+          <a name="answer_symbol"></a>
+          
+          <a name="answer_symbol="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">answer_symbol</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>define the column used to create the answer</p>
+          
+          </div>
+        </div>
+        
+        <div id="bad_answers_number-attribute-method" class="method-detail">
+          <a name="bad_answers_number"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">bad_answers_number</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>number of bas answers</p>
+          
+          </div>
+        </div>
+        
+        <div id="data-attribute-method" class="method-detail">
+          <a name="data"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">data</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>array that contains the original data entries used for the quiz</p>
+          
+          </div>
+        </div>
+        
+        <div id="good_answers_number-attribute-method" class="method-detail">
+          <a name="good_answers_number"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">good_answers_number</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>number of good answers</p>
+          
+          </div>
+        </div>
+        
+        <div id="question_symbol-attribute-method" class="method-detail">
+          <a name="question_symbol"></a>
+          
+          <a name="question_symbol="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">question_symbol</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>define the column used to create the question or answer</p>
+          
+          </div>
+        </div>
+        
+        <div id="random_entry-attribute-method" class="method-detail">
+          <a name="random_entry"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">random_entry</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>contains the radom value used to create the current question (only usefull
+with in block of <a
+href="Quiz.html#method-i-on_bad_answer">on_bad_answer</a> and <a
+href="Quiz.html#method-i-on_good_answer">on_good_answer</a>)</p>
+          
+          </div>
+        </div>
+        
+        <div id="running_quiz_data-attribute-method" class="method-detail">
+          <a name="running_quiz_data"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">running_quiz_data</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>array that contains data entries</p>
+          
+          </div>
+        </div>
+        
+        <div id="stats-attribute-method" class="method-detail">
+          <a name="stats"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">stats</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>current stats class for the quiz instance</p>
+          
+          </div>
+        </div>
+        
+        <div id="stats_dir-attribute-method" class="method-detail">
+          <a name="stats_dir"></a>
+          
+          <a name="stats_dir="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">stats_dir</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>define the saved /load dir for the stats</p>
+          
+          </div>
+        </div>
+        
+        <div id="total_questions-attribute-method" class="method-detail">
+          <a name="total_questions"></a>
+          
+          <a name="total_questions="></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">total_questions</span><span
+              class="attribute-access-type">[RW]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>number of total questions</p>
+          
+          </div>
+        </div>
+        
+        <div id="user_answer-attribute-method" class="method-detail">
+          <a name="user_answer"></a>
+          
+          <div class="method-heading attribute-method-heading">
+            <span class="method-name">user_answer</span><span
+              class="attribute-access-type">[R]</span>
+          </div>
+
+          <div class="method-description">
+          
+          <p>contains the user answer to the current question (only usefull with in
+block of <a href="Quiz.html#method-i-on_bad_answer">on_bad_answer</a> and
+<a href="Quiz.html#method-i-on_good_answer">on_good_answer</a>)</p>
+          
+          </div>
+        </div>
+        
+      </div><!-- attribute-method-details -->
+      
+
+      <!-- Methods -->
+      
+      <div id="public-class-method-details" class="method-section section">
+        <h3 class="section-header">Public Class Methods</h3>
+
+      
+        <div id="new-method" class="method-detail ">
+          <a name="method-c-new"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">new</span><span
+              class="method-args">(quiz_name, filename, symbols, column_separator, column_sub_separator = nil)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>create a new <a href="Quiz.html">Quiz</a> object</p>
+<ul><li>
+<p><b>Args</b>    :</p>
+<ul><li>
+<p><tt>quiz_name</tt> -&gt; name of the quiz (used to defined the filename of
+dumped stats)</p>
+</li><li>
+<p><tt>filename</tt> -&gt; the name of the file containing the data</p>
+</li><li>
+<p><tt>symbols</tt> -&gt; an array of ruby symbols that will be used as
+columns names</p>
+</li><li>
+<p><tt>column_separator</tt> -&gt; pattern to use to separe each multiple
+value in a column (optionnal)</p>
+</li><li>
+<p><tt>column_sub_separator</tt> -&gt; pattern to use to separe each columns</p>
+</li><li>
+<p><tt>block</tt> -&gt; do { |line | line.gsub(/s/,"") } if each entry values
+are separated by space and go in a hash</p>
+</li></ul>
+</li><li>
+<p><b>Returns</b> :</p>
+<ul><li>
+<p>A New <a href="Quiz.html">Quiz</a> object</p>
+</li></ul>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="new-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">quiz_name</span>, <span class="ruby-identifier">filename</span>, <span class="ruby-identifier">symbols</span>, <span class="ruby-identifier">column_separator</span>, <span class="ruby-identifier">column_sub_separator</span> = <span class="ruby-keyword">nil</span>) 
+  <span class="ruby-ivar">@quiz_name</span> = <span class="ruby-identifier">quiz_name</span>
+  <span class="ruby-ivar">@data</span> = <span class="ruby-constant">Lobotomy</span><span class="ruby-operator">::</span><span class="ruby-identifier">list_to_hash</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">symbols</span>, <span class="ruby-identifier">column_separator</span>, <span class="ruby-identifier">column_sub_separator</span>) 
+  
+  <span class="ruby-ivar">@running_quiz_data</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">fill_running_quiz_data</span>()
+  <span class="ruby-ivar">@stats</span> = <span class="ruby-constant">Lobotomy</span><span class="ruby-operator">::</span><span class="ruby-constant">Stats</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@data</span>, <span class="ruby-identifier">symbols</span>)
+  <span class="ruby-ivar">@question</span>=<span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@symbols</span> = <span class="ruby-identifier">symbols</span>
+  <span class="ruby-ivar">@total_questions</span> = <span class="ruby-value">20</span>
+  <span class="ruby-ivar">@current_question_number</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@remaining_questions</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@good_answers_number</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@bad_answers_number</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@random</span> = <span class="ruby-constant">Random</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- new-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- new-method -->
+
+      
+      </div><!-- public-class-method-details -->
+    
+      <div id="public-instance-method-details" class="method-section section">
+        <h3 class="section-header">Public Instance Methods</h3>
+
+      
+        <div id="get_random-method" class="method-detail ">
+          <a name="method-i-get_random"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">get_random</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>get a random entry in the entries set. This is a draw without replacement
+each entry have been selected.</p>
+<ul><li>
+<p><b>Returns</b> :</p>
+<ul><li>
+<p>a hash of an entry</p>
+</li></ul>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="get_random-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_random</span>()
+
+  <span class="ruby-identifier">fill_running_quiz_data</span>() <span class="ruby-keyword">if</span> <span class="ruby-ivar">@running_quiz_data</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">entries_number</span> = <span class="ruby-ivar">@running_quiz_data</span>.<span class="ruby-identifier">length</span>
+  <span class="ruby-identifier">max_Range</span>= <span class="ruby-identifier">entries_number</span> <span class="ruby-value">-1</span> <span class="ruby-comment"># -1 because random number is used as index in an array</span>
+  <span class="ruby-identifier">min_Range</span>= <span class="ruby-value">0</span>
+  
+  <span class="ruby-comment">#generate random number or get the last one:</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@running_quiz_data</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">random_number</span> = <span class="ruby-ivar">@random</span>.<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">min_Range</span><span class="ruby-operator">...</span><span class="ruby-identifier">max_Range</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">random_number</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">random_value</span> = <span class="ruby-ivar">@running_quiz_data</span>[<span class="ruby-identifier">random_number</span>].<span class="ruby-identifier">clone</span>
+
+  <span class="ruby-ivar">@running_quiz_data</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">random_number</span>)
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">random_value</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- get_random-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- get_random-method -->
+
+      
+        <div id="launch-method" class="method-detail ">
+          <a name="method-i-launch"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">launch</span><span
+              class="method-args">( total_questions = nil )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>launch the quiz</p>
+<ul><li>
+<p><b>Args</b>    :</p>
+<ul><li>
+<p><tt>total_questions</tt> -&gt; the number of questions for the current quiz
+if nil default is 20</p>
+</li></ul>
+</li><li>
+<p><b>Returns</b> :</p>
+<ul><li>
+<p>nothing</p>
+</li></ul>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="launch-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy.rb, line 173</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">launch</span>( <span class="ruby-identifier">total_questions</span> = <span class="ruby-keyword">nil</span> )
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">total_questions</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@remaining_questions</span> = <span class="ruby-ivar">@total_questions</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@total_questions</span> = <span class="ruby-identifier">total_questions</span>
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-ivar">@remaining_questions</span> = <span class="ruby-ivar">@total_questions</span>
+  
+  <span class="ruby-keyword">while</span> (<span class="ruby-ivar">@remaining_questions</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span> )
+    <span class="ruby-ivar">@current_question_number</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-ivar">@remaining_questions</span> <span class="ruby-operator">-=</span><span class="ruby-value">1</span>
+    
+    <span class="ruby-ivar">@random_entry</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_random</span>()
+
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@question</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@random_entry</span>[<span class="ruby-ivar">@question_symbol</span>].<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span><span class="ruby-constant">String</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-ivar">@random_entry</span>[<span class="ruby-ivar">@question_symbol</span>]
+    <span class="ruby-comment">#elsif @question != nil and @random_entry[@question_symbol].class ==String</span>
+    <span class="ruby-comment">#  puts replace_symbol_by_value_in( @question, @random_entry )</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@question</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@random_entry</span>[<span class="ruby-ivar">@question_symbol</span>].<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Array</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-ivar">@random_entry</span>[<span class="ruby-ivar">@question_symbol</span>].<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;/&quot;</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@question</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-comment">#and @random_entry[@question_symbol].class == Array</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-identifier">replace_symbol_by_value_in</span>( <span class="ruby-ivar">@question</span>, <span class="ruby-ivar">@random_entry</span> )
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-identifier">begining</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+    <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;\t&quot;</span>)
+    <span class="ruby-ivar">@user_answer</span> = <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">gets</span>.<span class="ruby-identifier">chomp</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user_answer</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp">/^[qQ]$/</span>)
+      <span class="ruby-keyword">return</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">user_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">begining</span>
+    <span class="ruby-identifier">good_answer</span>=<span class="ruby-keyword">nil</span>
+
+    <span class="ruby-comment">#if only one answer:</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@random_entry</span>[<span class="ruby-ivar">@answer_symbol</span>].<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">String</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user_answer</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@random_entry</span>[<span class="ruby-ivar">@answer_symbol</span>]
+        <span class="ruby-ivar">@good_answers_number</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">good_answer</span> =<span class="ruby-keyword">true</span>
+        <span class="ruby-ivar">@on_good_answer</span>.<span class="ruby-identifier">call</span> <span class="ruby-keyword">unless</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@on_good_answer</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-ivar">@bad_answers_number</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">good_answer</span> = <span class="ruby-keyword">false</span>
+        <span class="ruby-ivar">@on_bad_answer</span>.<span class="ruby-identifier">call</span> <span class="ruby-keyword">unless</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@on_bad_answer</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@random_entry</span>[<span class="ruby-ivar">@answer_symbol</span>].<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Array</span>
+      <span class="ruby-comment">#more than one possible answer</span>
+      <span class="ruby-ivar">@random_entry</span>[<span class="ruby-ivar">@answer_symbol</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">answer</span> <span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user_answer</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">answer</span>
+          <span class="ruby-ivar">@good_answers_number</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+          <span class="ruby-identifier">good_answer</span> =<span class="ruby-keyword">true</span>
+          <span class="ruby-keyword">break</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-ivar">@bad_answers_number</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+          <span class="ruby-identifier">good_answer</span> = <span class="ruby-keyword">false</span>            
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+      
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">good_answer</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span>
+        <span class="ruby-ivar">@on_good_answer</span>.<span class="ruby-identifier">call</span> <span class="ruby-keyword">unless</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@on_good_answer</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-ivar">@on_bad_answer</span>.<span class="ruby-identifier">call</span> <span class="ruby-keyword">unless</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@on_bad_answer</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;!!!!Invalid format af data&quot;</span>.<span class="ruby-identifier">red</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">add_new</span>(<span class="ruby-ivar">@random_entry</span>[<span class="ruby-value">:index</span>],{<span class="ruby-value">:good</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">good_answer</span>, <span class="ruby-value">:time</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">user_time</span>})
+  <span class="ruby-keyword">end</span>
+  
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- launch-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- launch-method -->
+
+      
+        <div id="load_results-method" class="method-detail ">
+          <a name="method-i-load_results"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">load_results</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Load old results from a Marshall dump file: the full file name is build
+with : <a href="Quiz.html#attribute-i-stats">Quiz.stats</a>.<a
+href="Quiz.html#attribute-i-stats_dir">stats_dir</a> + “/” + <a
+href="Quiz.html#attribute-i-stats">Quiz.stats</a>.stats_session + “/” +
+@quiz_name + “_” + @question_symbol.to_s +
+“<em>and</em>”+@answer_symbol.to_s+“_stats.dump”</p>
+            
+
+            
+            <div class="method-source-code" id="load_results-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy.rb, line 281</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_results</span>()
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@stats_dir</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">stats_dir</span> = <span class="ruby-ivar">@stats_dir</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">stats_file</span> = <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">stats_dir</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">stats_session</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@quiz_name</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@question_symbol</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_and_&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@answer_symbol</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_stats.dump&quot;</span>
+                    <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">load</span>()
+            <span class="ruby-keyword">end</span></pre>
+            </div><!-- load_results-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- load_results-method -->
+
+      
+        <div id="on_bad_answer-method" class="method-detail ">
+          <a name="method-i-on_bad_answer"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">on_bad_answer</span><span
+              class="method-args">(&block)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="on_bad_answer-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy.rb, line 289</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">on_bad_answer</span>(&amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-ivar">@on_bad_answer</span> = <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>( &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- on_bad_answer-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- on_bad_answer-method -->
+
+      
+        <div id="on_good_answer-method" class="method-detail ">
+          <a name="method-i-on_good_answer"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">on_good_answer</span><span
+              class="method-args">(&block)</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            
+            
+
+            
+            <div class="method-source-code" id="on_good_answer-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy.rb, line 293</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">on_good_answer</span>(&amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-ivar">@on_good_answer</span> = <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>( &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- on_good_answer-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- on_good_answer-method -->
+
+      
+        <div id="question_label-method" class="method-detail ">
+          <a name="method-i-question_label"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">question_label</span><span
+              class="method-args">( string = nil )</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>adapt the displayed question for your need.</p>
+<ul><li>
+<p><b>Args</b>    :</p>
+<ul><li>
+<p><tt>string</tt> -&gt; a string. Must contains at least one symbol
+(":symbol") in order to display a random value. The symbols you can use are
+the same that you defined when you create the your <a
+href="Quiz.html">Quiz</a> class. Those symbols are replaced by the
+corresponding value for the current random value</p>
+</li></ul>
+</li><li>
+<p><b>Returns</b> :</p>
+<ul><li>
+<p>nothing</p>
+</li></ul>
+</li></ul>
+            
+
+            
+            <div class="method-source-code" id="question_label-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy.rb, line 254</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">question_label</span>( <span class="ruby-identifier">string</span> = <span class="ruby-keyword">nil</span> )
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">string</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">String</span> 
+    <span class="ruby-ivar">@question</span> = <span class="ruby-identifier">string</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- question_label-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- question_label-method -->
+
+      
+        <div id="results-method" class="method-detail ">
+          <a name="method-i-results"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">results</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>return the stats class for to the current quiz</p>
+            
+
+            
+            <div class="method-source-code" id="results-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy.rb, line 262</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">results</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">stats_data</span>
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- results-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- results-method -->
+
+      
+        <div id="save_results-method" class="method-detail ">
+          <a name="method-i-save_results"></a>
+
+          
+          <div class="method-heading">
+            <span class="method-name">save_results</span><span
+              class="method-args">()</span>
+            <span class="method-click-advice">click to toggle source</span>
+          </div>
+          
+
+          <div class="method-description">
+            
+            <p>Save the current results to a Marshall dump file: the full file name is
+build with : <a href="Quiz.html#attribute-i-stats">Quiz.stats</a>.<a
+href="Quiz.html#attribute-i-stats_dir">stats_dir</a> + “/” + <a
+href="Quiz.html#attribute-i-stats">Quiz.stats</a>.stats_session + “/” +
+@quiz_name + “_” + @question_symbol.to_s +
+“<em>and</em>”+@answer_symbol.to_s+“_stats.dump”</p>
+            
+
+            
+            <div class="method-source-code" id="save_results-source">
+<pre>
+<span class="ruby-comment"># File lib/lobotomy.rb, line 270</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">save_results</span>()
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@stats_dir</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">stats_dir</span> = <span class="ruby-ivar">@stats_dir</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">stats_file</span> = <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">stats_dir</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">stats_session</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;/&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@quiz_name</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@question_symbol</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;_and_&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@answer_symbol</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-string">&quot;_stats.dump&quot;</span>
+  <span class="ruby-ivar">@stats</span>.<span class="ruby-identifier">save</span>()
+<span class="ruby-keyword">end</span></pre>
+            </div><!-- save_results-source -->
+            
+          </div>
+
+          
+
+          
+        </div><!-- save_results-method -->
+
+      
+      </div><!-- public-instance-method-details -->
+    
+    </div><!-- 5Buntitled-5D -->
+  
+
+  </div><!-- documentation -->
+
+  <div id="validator-badges">
+    <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+    <p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+      Rdoc Generator</a> 2</small>.</p>
+  </div>
+
+</body>
+</html>
+
