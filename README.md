@@ -1,9 +1,9 @@
-###Lobotomy
+##Lobotomy
 
-####Create cli quizzes and force your brain:
+###Create cli quizzes and force your brain:
 Lobotomy is a module that helps you to create little quizzes, for terminal emulator, based on data in a text file.
 
-####Install:
+###Install:
 Get current version:
 
     git clone git://github.com/cedlemo/lobotomy.git
@@ -17,7 +17,7 @@ Install lobotomy for the current user:
 
     gem install lobotomy-*.gem
 
-####Lobotomy overview:
+###Lobotomy overview:
 While I was learning Japanese, I needed a tool that helps me to quickly create little quizzes in order to learn things and to check what I have learned .
 
 lobotomy read a text file which contains data and is formated like this:
@@ -29,10 +29,10 @@ lobotomy read a text file which contains data and is formated like this:
 
 User create a new Lobotomy::Quiz class that load this file and generate a new quiz. User can see his stats and save them.
 
-####Examples:
-	Code examples for a simple quiz and a more advanced ones.
+###Examples:
+Code examples for a simple quiz and a more advanced ones.
 
-#####Simple example:
+####Simple example:
 Here is a simple quiz that just displays if your answer is good or wrong.
 
 With the file vocab.list :
@@ -69,7 +69,7 @@ Create a new ruby script called vocab_quizz.rb
 
 		quiz.launch(nb_questions)
 
-#####Quiz with more customization
+####Quiz with more customization
 
 The data file is kanas.list:
 
