@@ -10,12 +10,21 @@ trap('INT') {
 #clear the terminal
 system("clear")
 
-#set default number of questions for the quiz
+#set default number of questions and the default column used to build question for the quiz 
 nb_quiz_questions = 10
+question_symbol = :hiragana
 
 #user can modify the number of questions with the first argument of the script
-if ARGV.length ==1 and ARGV[0].to_i> 0 and ARGV[0].to_i <1000
-  nb_quiz_questions = ARGV[0].to_i
+if ARGV.length >=1 
+  ARGV.each do | arg |
+    if arg.match(/^\d+$/)
+      nb_quiz_questions = ( arg.to_i > 0 and arg.to_i <1000 ) ? arg.to_i : 10
+    elsif arg.match(/^-h$/)
+      question_symbol = :hiragana
+    elsif arg.match(/^-k$/)
+      question_symbol = :katakana
+    end
+  end
 end
 
 kanas_file = "kanas.list"
@@ -23,9 +32,9 @@ stats_directory="/home/" +ENV['USER']+"/.lobotomy/stats"
 
 quiz = Lobotomy::Quiz.new("kanas_quiz", kanas_file, [:romaji,:hiragana,:katakana],"\s",nil)
 
-quiz.question_symbol = :hiragana
-quiz.answer_symbol = :romaji 
-quiz.question_label(":hiragana".blue + " ?")
+quiz.question_symbol = question_symbol
+quiz.answer_symbol = :romaji
+quiz.question_label(":#{question_symbol}".blue + " ?")
 quiz.stats_dir = stats_directory
 
 quiz.on_bad_answer do
