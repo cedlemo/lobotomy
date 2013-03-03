@@ -43,7 +43,7 @@ quiz.on_bad_answer do
   print "\t\t"
   quiz.data.each do | entry |
     if entry[quiz.answer_symbol].match(/^#{quiz.user_answer}$/)
-      print "you mistake #{quiz.random_entry[:hiragana]} for #{entry[quiz.question_symbol].black} => #{entry[quiz.answer_symbol].black}."
+      print "you mistake #{quiz.random_entry[quiz.question_symbol]} for #{entry[quiz.question_symbol].black} => #{entry[quiz.answer_symbol].black}."
     end
   end
   system("mplayer kanas_sounds/#{quiz.random_entry[:romaji]}.mp3 > /dev/null 2>&1")
