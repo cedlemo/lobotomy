@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'lobotomy'
-  s.version     = '0.0.1'
-  s.date        = '2013-03-01'
+  s.version     = '0.0.2'
+  s.date        = '2013-03-20'
   s.summary     = "Create cli quizzes and force your brain"
   s.description = "Lobotomy is a module that helps you to create little quizzes, for terminal emulator, based on data in a text file."
   s.authors     = ["cedlemo"]

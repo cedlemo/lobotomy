@@ -18,7 +18,7 @@ Install lobotomy for the current user:
     gem install lobotomy-*.gem
 
 ###Lobotomy overview:
-While I was learning Japanese, I needed a tool that helps me to quickly create little quizzes in order to learn things and to check what I have learned .
+When I started learning Japanese, I needed a tool that helps me to quickly create little quizzes in order to learn things and to check what I have learned .
 
 lobotomy read a text file which contains data and is formated like this:
 
@@ -56,10 +56,13 @@ Create a new ruby script called vocab_quizz.rb
 
     quiz = Lobotomy::Quiz.new( quiz_name, data_file, symbols, column_separator, column_sub_separator )
 
-    quiz.question_symbol = :word
-    quiz.answer_symbol = :romaji
-
-    quiz.on_bad_answer do
+    #The quiz will use the word column in order to create the question and the answer are checked with the romaji column.
+		#quiz.question_symbol will be filled with  :word
+    #quiz.answer_symbol will be filled with :romaji
+		
+		quiz.answer_is_word_answer_is_romaji()
+    
+		quiz.on_bad_answer do
       puts "Wrong".red
     end
 
@@ -92,10 +95,9 @@ The separator we use is the "space" char. No sub separator is given because we d
 
 Here is the basic and mandatory configuration of the script:
 
-    #define the column used as the question value
-    quiz.question_symbol = :hiragana
-    #define the column used as the answer value (it's this value that is checked with the user answer)
-    quiz.answer_symbol = :romaji
+    #define the column hiragana used as the question value
+    #define the column romaji used as the answer value (it's this value that is checked with the user answer)
+    quiz.question_is_hiragana_answer_is_romaji()
 
 This part is optional but help to have a more customized quiz.
 

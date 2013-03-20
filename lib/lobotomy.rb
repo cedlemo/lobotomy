@@ -105,9 +105,9 @@ module Lobotomy
     #number of total questions
     attr_accessor :total_questions
     #define the column used to create the question or answer
-    attr_accessor :question_symbol
+    attr_reader :question_symbol
     #define the column used to create the answer
-    attr_accessor :answer_symbol
+    attr_reader :answer_symbol
     #define the saved /load dir for the stats
     attr_accessor :stats_dir
 
@@ -293,7 +293,15 @@ module Lobotomy
     def on_good_answer(&block)
       @on_good_answer = Proc.new( &block)
     end
-    private
+    
+		def method_missing(method, *args, &block)
+			if method.to_s.match(/question_is_([^_]*)_answer_is_([^_]*)/)
+				@question_symbol = $1.to_sym
+				@answer_symbol = $2.to_sym
+			end
+		end
+		
+		private
 
     def fill_running_quiz_data()
       @running_quiz_data = Array.new
@@ -417,3 +425,4 @@ module Lobotomy
 end
 
 #TODO in Quiz.load_results add boolean argument in order to create a new Quiz.data set without the already tested entries. On each load_results, new quiz will only use non tested entries
+#TODO use method_missing in order to handle method like: question_is_romaji_and_answer_is_kana() 
