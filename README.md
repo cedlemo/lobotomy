@@ -59,8 +59,8 @@ Create a new ruby script called vocab_quizz.rb
     #The quiz will use the word column in order to create the question and the answer are checked with the romaji column.
 		#quiz.question_symbol will be filled with  :word
     #quiz.answer_symbol will be filled with :romaji
-		
-		quiz.answer_is_word_answer_is_romaji()
+    
+    quiz.question_is_word_answer_is_romaji()
     
 		quiz.on_bad_answer do
       puts "Wrong".red
