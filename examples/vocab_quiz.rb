@@ -10,9 +10,10 @@ nb_questions = 10
 
 quiz = Lobotomy::Quiz.new( quiz_name, data_file, symbols, column_separator, column_sub_separator )
 
-quiz.question_symbol = :word
-quiz.answer_symbol = :romaji
+#quiz.question_symbol = :word
+#quiz.answer_symbol = :romaji
 
+quiz.question_is_word_answer_is_romaji
 quiz.on_bad_answer do
 	puts "Wrong".red
 end

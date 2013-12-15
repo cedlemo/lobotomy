@@ -1,11 +1,5 @@
-require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32/
-
-##
-#Code taken from:
+# Code taken from:
 # https://github.com/defunkt/colored
-#
-# cute.
-#
 # >> "this is red".red
 #
 # >> "this is red with a blue background (read: ugly)".red_on_blue
@@ -15,9 +9,10 @@ require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32/
 # >> "this is really bold and really blue".bold.blue
 #
 # >> Colored.red "This is red" # but this part is mostly untested
+# Colored module
 module Colored
-  extend self
-
+  require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32/
+  module_function
   COLORS = {
     'black' => 30,
     'red' => 31,
@@ -35,21 +30,21 @@ module Colored
     'underline' => 4,
     'reversed' => 7
   }
-  #check if String class already have methods we define
+  # check if String class already have methods we define
   method_exist = false
 
   COLORS.each do |color, value|
-    if String.new().methods.grep(/#{color}/).empty? == false
+    if String.new.methods.grep(/#{color}/).empty? == false
       method_exist = true
       break
     end
-    if String.new().methods.grep(/on_#{color}/).empty? ==false
+    if String.new.methods.grep(/on_#{color}/).empty? == false
       method_exist = true
       break
     end
-    COLORS.each do |highlight, value|
+    COLORS.each do |highlight, _|
       next if color == highlight
-      if String.new().methods.grep(/#{color}_on_#{highlight}/).empty? == false
+      if String.new.methods.grep(/#{color}_on_#{highlight}/).empty? == false
         method_exist = true
         break
       end
@@ -58,7 +53,7 @@ module Colored
   unless method_exist
     EXTRAS.each do |extra, value|
       next if extra == 'clear'
-      if String.new().methods.grep(/#{extra}/).empty? == false
+      if String.new.methods.grep(/#{extra}/).empty? == false
         method_exist = true
         break
       end
@@ -66,24 +61,25 @@ module Colored
   end
 
   if method_exist == true
-    puts "Warning some colorize methods are already defined. Module colored not loaded."
+    puts 'Warning some colorize methods are already defined. Module colored' <<
+         ' not loaded.'
     return
   end
-  
-  #define new methods
+
+  # define new methods
   COLORS.each do |color, value|
     define_method(color) do
-      colorize(self, :foreground => color)
+      colorize(self, foreground: color)
     end
 
     define_method("on_#{color}") do
-      colorize(self, :background => color)
+      colorize(self, background: color)
     end
 
-    COLORS.each do |highlight, value|
+    COLORS.each do |highlight, _|
       next if color == highlight
       define_method("#{color}_on_#{highlight}") do
-        colorize(self, :foreground => color, :background => highlight)
+        colorize(self, foreground: color, background: highlight)
       end
     end
   end
@@ -91,26 +87,27 @@ module Colored
   EXTRAS.each do |extra, value|
     next if extra == 'clear'
     define_method(extra) do
-      colorize(self, :extra => extra)
+      colorize(self, extra: extra)
     end
   end
 
   define_method(:to_eol) do
     tmp = sub(/^(\e\[[\[\e0-9;m]+m)/, "\\1\e[2K")
-    if tmp == self
-      return "\e[2K" << self
-    end
+    return '\e[2K' << self if tmp == self
     tmp
   end
 
   def colorize(string, options = {})
-    colored = [color(options[:foreground]), color("on_#{options[:background]}"), extra(options[:extra])].compact * ''
+    colored = [
+              color(options[:foreground]), color("on_#{options[:background]}"),
+              extra(options[:extra])
+    ].compact * ''
     colored << string
     colored << extra(:clear)
   end
 
   def colors
-    @@colors ||= COLORS.keys.sort
+    @colors ||= COLORS.keys.sort
   end
 
   def extra(extra_name)
@@ -127,4 +124,3 @@ module Colored
 end unless Object.const_defined? :Colored
 
 String.send(:include, Colored)
-

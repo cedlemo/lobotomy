@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# encoding: UTF-8
 require 'lobotomy'
 
 #handle Ctrl-C
@@ -34,6 +33,7 @@ quiz = Lobotomy::Quiz.new("kanas_quiz", kanas_file, [:romaji,:hiragana,:katakana
 
 quiz.question_symbol = question_symbol
 quiz.answer_symbol = :romaji
+#quiz.question_is_hiragana_answer_is_romaji
 quiz.question_label(":#{question_symbol}".blue + " ?")
 quiz.stats_dir = stats_directory
 
@@ -65,16 +65,17 @@ quiz.launch(nb_quiz_questions)
 #analyse the current stats (not part of the quiz)
 puts "Do you want to see your difficulties?".black
 if STDIN.gets.chomp.match(/[yY]/)
-
+#p quiz.results
   quiz.results.each do | entry |
-    if entry[:stats].length != 0
+    if !entry[:stats].empty?
+  #p entry
       good=0
       bad = 0
       entry[:stats].each do | stats |
         if stats[:good] == true
           good += 1
         else
-          bad += 1
+         bad += 1
         end
       end
       if bad > good
