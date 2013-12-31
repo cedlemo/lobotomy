@@ -58,7 +58,7 @@ module Lobotomy
     end
     data_in_hashes
   end
-  
+
   # Generate multiple draw without replacement on a data set
   class DrawWR
     attr_reader :data, :last_draw
@@ -104,7 +104,7 @@ module Lobotomy
     # @stats_dir define the saved /load dir for the stats
     attr_reader :data, :user_answer, :random_entry , :stats,
                 :draw, :good_answers_number, :bad_answers_number,
-                :total_questions, :stats_dir
+                :total_questions
     # #
     # @question_symbol define the column used to create the question or answer
     # @answer_symbol define the column used to create the answer
@@ -129,10 +129,6 @@ module Lobotomy
       @data = Lobotomy.list_to_hash(file, symbols, col_sep, col_sub_sep)
       @time = @good_answers_number = @bad_answers_number = 0
       @draw = Lobotomy::DrawWR.new(@data)
-
-      stats_file = @quiz_name + '_' + @question_symbol.to_s + '_and_' +
-        @answer_symbol.to_s + '_stats.dump'
-      @stats = Lobotomy::Stats.new(@data, symbols, ENV['USER'], stats_file)
     end
 
     # #
@@ -176,7 +172,7 @@ module Lobotomy
     # #
     # return the stats class for to the current quiz
     def results
-      @stats.stats_data
+      @stats.data
     end
 
     # #
@@ -186,8 +182,22 @@ module Lobotomy
     end
     # #
     # Load old results from a Marshall dump file:
+    # old stats are analysed:
+    # 1-  sort entries on the number of times they have been picked
+    #     based on entry[:stats].size
+    # 2-  remove from the data sets the entries that have been already checked
     def load_results
-      @stats.load
+      if @stats.load
+        # @stats.data -analyse->-modify @draw.data
+        min = find_min_number_of_stats(@stats.data)
+        # get entries with greater stats number and remove them from @draw.data
+        @stats.data.each_with_index do |v, i|
+          @draw.data.delete_at(i) if v[:stats].size > min
+        end
+        return true
+      else
+        return false
+      end
     end
 
     def on_bad_answer(&block)
@@ -200,13 +210,15 @@ module Lobotomy
 
     def method_missing(method, *args, &block)
       if /question_is_(?<q>[^_]*)_answer_is_(?<a>[^_]*)/ =~ method.to_s
+        stats_file = @quiz_name + '_' + q + '_and_' + a + '_stats.dump'
+        @stats = Lobotomy::Stats.new(@data, @symbols, ENV['USER'], stats_file)
         @question_symbol = q.to_sym
         @answer_symbol = a.to_sym
       end
     end
 
     private
-    
+
     def do_when_answer_is(bool)
       if bool
         @good_answers_number += 1
@@ -264,34 +276,46 @@ module Lobotomy
       end
       good_answer
     end
+
+    def find_min_number_of_stats(data)
+      data.inject(data[0][:stats].size) do |min, entry|
+        min > entry[:stats].size ? min = entry[:stats].size : min
+      end
+    end
   end
 
   # Record/load some data
   class Stats
     require 'fileutils'
-    attr_accessor :stats_dir, :stats_session, :stats_file
-    attr_reader :stats_data
+    attr_accessor :stats_session, :stats_file
+    attr_reader :data
 
+    XDG_DATA_HOME = ENV['HOME'] + '/.local/share'
     # #
     # Create a new Stats class
     # datas => array of datas used by the quiz
     # symbols => array of ruby symbols which can be those given in order to
     # create the quiz.
     def initialize(data, symbols, session = ENV['USER'], file = 'stats.dump')
-      @stats_dir = File.expand_path('./stats')
-      @stats_session, @symbols = session, symbols
-      @stats_file = @stats_dir + '/' + @stats_session + '/' + file
-      @stats_data =  []
+      @stats_dir = XDG_DATA_HOME + '/lobotomy'
+      @stats_session, @symbols, @file = session, symbols, file
+      @stats_file = @stats_dir + '/' + @stats_session + '/' + @file
+      @data =  []
 
       data.each_with_index do |entry|
         an_h = entry.select { |k, v| symbols.include?(k) }
         an_h[:stats] = []
-        @stats_data.push(an_h.clone)
+        @data.push(an_h.clone)
       end
     end
 
+    def stats_dir=(value)
+      @stats_dir = value
+      @stats_file = @stats_dir + '/' + @stats_session + '/' + @file
+    end
+
     def add(entry_index, stats)
-      @stats_data[entry_index][:stats].push(stats)
+      @data[entry_index][:stats].push(stats)
     end
 
     def dir_tree_create_if_not_exist
@@ -299,7 +323,7 @@ module Lobotomy
       if !File.directory?(@stats_dir)
         FileUtils.mkdir_p(@stats_dir + "/#{@stats_session}")
       elsif !File.directory?(@stats_dir + "/#{@stats_session}")
-        FileUtils.mkdir(@stats_dir + "/#{session_name}")
+        FileUtils.mkdir(@stats_dir + "/#{@stats_session}")
       end
     end
 
@@ -307,7 +331,7 @@ module Lobotomy
       dir_tree_create_if_not_exist
 
       File.open(@stats_file, 'w') do | file |
-        file.write(Marshal.dump(@stats_data))
+        file.write(Marshal.dump(@data))
       end
     end
 
@@ -328,48 +352,20 @@ module Lobotomy
 
     def load
       if !File.directory?(@stats_dir + '/' + @stats_session)
-        puts 'error no stats to load'
-        return -1
+        STDOUT.puts 'error no stats to load ' << @stats_dir + '/' +
+          @stats_session
+        return false
       elsif !File.exist?(@stats_file)
-        puts 'bad dump files for #{@stats_session} session'
-        return -1
+        STDOUT.puts "bad dump files for #{@stats_session} session"
+        return false
       end
-      # need to check if the @stats_data generated at the class creation
+      # need to check if the @data generated at the class creation
       # and the loaded stats_data datacontains the same entries
       loaded_stats_data = Marshal.load(File.read(@stats_file))
-      if compare_stats_data(@stats_data, loaded_stats_data)
-      @stats_data = loaded_stats_data.clone
-#     loaded_stats_data.length != @stats_data.length
-#      @stats_data.each do | data |
-#        same_entry = nil
-#        found_at = nil
-#        count = 0
-#        loaded_stats_data.each do | loaded_stats |
-#          @symbols.each do | symbol |
-#            if data[symbol] == loaded_stats[symbol]
-#              unless same_entry == false
-#                same_entry = true
-#              end
-#            else
-#              same_entry = false
-#            end
-#            if same_entry == true
-#              data[:stats] += loaded_stats[:stats].clone
-#              found_at = count
-#              break
-#            end
-#          end
-#          if found_at
-#            loaded_stats_data.delete_at(found_at)
-#          end
-#          same_entry = nil
-#          found_at = nil
- #         count += 1
+      if compare_stats_data(@data, loaded_stats_data)
+        @data = loaded_stats_data.clone
       end
+      return true
     end
   end
 end
-
-# TODO: in Quiz.load_results add boolean argument in order to create a new
-# Quiz.data set without the already tested entries. On each load_results,
-# new quiz will only use non tested entries

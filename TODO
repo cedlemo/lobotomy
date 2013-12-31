@@ -1,1 +1,6 @@
+/home/cedlemo/projets/lobotomy/lib/lobotomy.rb:92:3: C: Class definition is too long. [107/100]
+/home/cedlemo/projets/lobotomy/lib/lobotomy.rb:276:7: W: end at 276, 6 is not aligned with good_answer  = if at 271, 21
+/home/cedlemo/projets/lobotomy/lib/lobotomy.rb:281:12: C: Prefer reduce over inject.
+/home/cedlemo/projets/lobotomy/lib/lobotomy.rb:353:5: C: Method has too many lines. [13/10]
+/home/cedlemo/projets/lobotomy/lib/lobotomy.rb:368:7: C: Redundant `return` detected.
 /home/cedlemo/projets/lobotomy/lib/lobotomy/colored.rb:13:1: C: Missing top-level module documentation comment.

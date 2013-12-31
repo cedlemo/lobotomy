@@ -183,22 +183,35 @@ class TestLobotomy < Test::Unit::TestCase
     tmp = TmpData.new('class_gen_qestions', ',', '/')
 		quiz = Quiz.new('test', tmp.file, tmp.symbols, tmp.sep, tmp.sub_sep)
     quiz.question_is_french_answer_is_english
-    #10.times do
-    #  quiz.test_question_output 
-    #  quiz.fake_user_answer(true)
-    #  assert_equal(true,quiz.send(:check_user_answer))
-    #end 
-		#10.times do
-    #  quiz.test_question_output 
-    #  quiz.fake_user_answer(false)
-    #  assert_equal(false,quiz.send(:check_user_answer))
-    #end 
-    #STDOUT.puts quiz.stats.stats_data.inspect
     tmp.data.each_with_index do | entry, i|
       assert_equal( entry.clone.tap { |x| x.delete(:index)} , 
-                    quiz.stats.stats_data[i].clone.tap{ |x| x.delete(:stats)})
+                    quiz.stats.data[i].clone.tap{ |x| x.delete(:stats)})
     end
     File.delete(tmp.file)
+  end
+
+  def test_Quiz_load_stats
+    tmp = TmpData.new('class_gen_qestions', ',', '/')
+		quiz = Quiz.new('test', tmp.file, tmp.symbols, tmp.sep, tmp.sub_sep)
+    quiz.question_is_french_answer_is_english
+    quiz.stats.stats_dir = '/tmp'
+    #create false stats:
+    quiz.stats.add(1, good: true, time: Time.now)
+    old_stats = quiz.stats.data.clone
+    quiz.save_results
+    stats_file_name = File.expand_path('/tmp') + '/' + ENV['USER'] + '/' + 
+      quiz.quiz_name + '_' + quiz.question_symbol.to_s + '_and_' +
+      quiz.answer_symbol.to_s + '_stats.dump'
+    assert(File.exist?(stats_file_name),"wrong filename #{stats_file_name}")  		
+    quiz = Quiz.new('test', tmp.file, tmp.symbols, tmp.sep, tmp.sub_sep)
+    quiz.question_is_french_answer_is_english
+    quiz.stats.stats_dir = '/tmp'
+    assert_not_equal(old_stats, quiz.stats.data)
+    assert_equal(true, quiz.load_results)
+    assert_equal(old_stats, quiz.stats.data)
+    assert_equal(2, quiz.draw.data.size)
+    File.delete(tmp.file)
+
   end
 end
 
